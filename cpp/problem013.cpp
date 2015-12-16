@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
     carry(S);
     reverse(S.begin(), S.end());
 
-    for (int i=0; i<S.size()eading zero; ++i) {
+    for (int i=0; i<S.size(); ++i) {
         cout << S[i] << " ";
     }
     cout << endl;
