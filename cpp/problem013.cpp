@@ -1,7 +1,9 @@
 /*
     Copyright (c) 2015 - buyuk.dev@gmail.com
     ----------------------------------------
-    << INSERT DESCRIPTION HERE >>
+    Compute sum of long numbers.
+    TODO: should print only first 10 digits.
+    TODO: handle leading zero.
 */
 
 
@@ -83,7 +85,7 @@ int main(int argc, char* argv[])
     carry(S);
     reverse(S.begin(), S.end());
 
-    for (int i=0; i<S.size(); ++i) {
+    for (int i=0; i<S.size()eading zero; ++i) {
         cout << S[i] << " ";
     }
     cout << endl;
