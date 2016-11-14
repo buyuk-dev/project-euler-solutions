@@ -91,7 +91,7 @@ int main()
     reverse(num.begin(), num.end());
     string res = convert2dec(num);
 
-    cout << res << endl;
+    cout << digitsum(res) << endl;
  
     return 0;
 }
