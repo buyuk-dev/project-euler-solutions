@@ -1,5 +1,6 @@
 /*
     Copyright (c) 2016 - buyuk.dev@gmail.com
+    Copyright (c) 2016 - artur.pi.laskowski@gmail.com
     ----------------------------------------
     Calculate sum of digits in number 100!
 */
@@ -8,10 +9,12 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
  
 using namespace std;
  
 const int base = 1000000;
+const int base_len = (int)log10(base);
  
 vector<int> mul10e6(vector<int>& num, short int n)
 {
@@ -38,8 +41,20 @@ vector<int> mul10e6(vector<int>& num, short int n)
 string convert2dec(vector<int>& A)
 {
     ostringstream oss;
+    bool first = true;
     for (int d: A)
     {
+    	int len = 0;
+    	if (d) {
+    		len = (int)log10(d) + 1;
+    	}
+    	if (first) {
+    		len = base_len;
+    		first = false;
+    	}
+    	for(int i = 0; i < base_len - len - 1; ++i) {
+    		oss << 0;
+    	}
         oss << d;
     }
     return oss.str();
@@ -76,7 +91,7 @@ int main()
     reverse(num.begin(), num.end());
     string res = convert2dec(num);
 
-    cout << digisum(res) << endl;
+    cout << res << endl;
  
     return 0;
 }
