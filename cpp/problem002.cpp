@@ -6,42 +6,85 @@
 */
 
 #include <iostream>
-#include <vector>
+#include <fstream>
 #include <string>
-#include <list>
-#include <map>
-#include <algorithm>
-#include <cmath>
-
-
-#define MAX(a,b) (a<b?b:a)
-#define MIN(a,b) (a<b?a:b)
-
 
 
 using namespace std;
 
 
-int evenFibSum(int n) {
+
+struct InputData
+{
+    int n;
+};
+
+
+struct OutputData
+{
+    int result;
+};
+
+
+InputData load(string filename)
+{
+    InputData data;
+
+    ifstream inputFile(filename.c_str());
+    if (!inputFile)
+    {
+        throw string("file does not exist");
+    }
+
+    inputFile >> data.n;
+
+    return data;
+}
+
+
+int evenFibSum(int n)
+{
     int a = 0, b = 2;
     int sum = 0;
-    while (b <= n) {
+    while (b <= n)
+    {
         int tmp = a;
         a = b;
-        b = 4*b + tmp;
+        b = 4 * b + tmp;
         sum += a;
     }
     return sum;
 }
 
 
+OutputData solve(InputData input)
+{
+    OutputData data;
+    data.result = evenFibSum(input.n);
+    return data;
+}
+
+
+
+void displayData(InputData input, OutputData output)
+{
+    cout << "Sum of even Fibonacci numbers lower than "
+         << input.n << " equals " << output.result << endl;
+}
+
+
 int main(int argc, char* argv[]) 
 {
-    ios_base::sync_with_stdio(0);
-
-    int n; cin >> n;
-    cout << "sum = " << evenFibSum(n) << endl;
-    
+    try
+    {
+        InputData input = load("data/problem002.dat");
+        OutputData output = solve(input);
+        displayData(input, output);
+    }
+    catch (string err)
+    {
+        cerr << "[ ERROR ] " << err << endl;
+    }
     return 0;
 }
 
