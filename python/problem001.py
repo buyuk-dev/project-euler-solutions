@@ -4,6 +4,17 @@
 # sum of all multiples of 3 or 5 below 1000
 #
 
+def load(filename):
+
+    data = None
+
+    with open(filename, "r") as dataFile:
+        line = dataFile.readline()
+        data = line.split()
+        data = [int(n) for n in data]
+
+    return data
+
 
 def sumOfMultiplesOfN(n, limit):
 
@@ -11,12 +22,19 @@ def sumOfMultiplesOfN(n, limit):
     return n * (kmax * (kmax + 1) / 2)
 
 
+def solve(a, b, lim):
+
+    sumA = sumOfMultiplesOfN(a, lim)
+    sumB = sumOfMultiplesOfN(b, lim)
+    sumAB = sumOfMultiplesOfN(a * b, lim)
+    
+    return sumA + sumB - sumAB
+
+
 if __name__ == '__main__':
 
-    sum3 = sumOfMultiplesOfN(3, 999)
-    sum5 = sumOfMultiplesOfN(5, 999)
-    sum15 = sumOfMultiplesOfN(15, 999)
+    a, b, lim = load("data/problem001.dat")
+    
+    result = solve(a, b, lim - 1)
 
-    result = sum3 + sum5 - sum15
-
-    print "Sum of multiples of 3 or 5 lower than 1000 is ", result
+    print "Sum of multiples of ", a, " or ", b, " under ", lim, " is ", result
