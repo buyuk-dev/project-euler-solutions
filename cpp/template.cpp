@@ -1,41 +1,61 @@
 /*
     Copyright (c) 2016 - buyuk.dev@gmail.com
     ----------------------------------------
-    << INSERT DESCRIPTION HERE >>
+
 */
 
-
 #include <iostream>
-#include <vector>
 #include <string>
-#include <list>
-#include <map>
-#include <algorithm>
-#include <cmath>
-#include <fstream>
-#include <sstream>
-
-
-
-#define MAX(a,b) (a<b?b:a)
-#define MIN(a,b) (a<b?a:b)
-
 
 
 using namespace std;
 
 
 
-int main(int argc, char* argv[]) 
+struct InputData
 {
-    ios_base::sync_with_stdio(0);
+
+};
 
 
-    return 0;
+struct OutputData
+{
+
+};
+
+
+InputData load(string filename)
+{
+    InputData data;
+    
+    return data;
 }
 
 
+OutputData solve(InputData input)
+{
+    OutputData output;
+    
+    return output;
+}
 
+
+int main(int argc, char* argv[]) 
+{
+    try
+    {
+        InputData input = load(filename);
+        OutputData output = solve(input);
+
+        printResults(input, output);
+    }
+    catch (string err)
+    {
+        cerr << "[ ERROR ] "<< err << endl;    
+    }
+
+    return 0;
+}
 
 
 
