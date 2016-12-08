@@ -6,8 +6,8 @@
 */
 
 #include <cstdio>
+#include <iostream>
 #include <string>
-#include <fstream>
 
 using namespace std;
 
@@ -18,18 +18,12 @@ struct Data
 };
 
 
-Data load(string filename)
+Data load()
 {
     Data data;
-    
-    ifstream dataFile(filename.c_str());
-    if (!dataFile)
-    {
-        throw string("File does not exist.");
-    }
 
-    dataFile >> data.a >> data.b >> data.lim;
-   
+    cin >> data.a >> data.b >> data.lim;
+
     return data;
 }
 
@@ -55,7 +49,7 @@ int main()
 {
     try 
     {
-        Data data = load("data/problem001.dat");
+        Data data = load();
 
         int result = solve(data.a, data.b, data.lim);
 
