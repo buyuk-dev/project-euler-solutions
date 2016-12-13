@@ -49,7 +49,7 @@ if __name__ == '__main__':
     for i in range(1, lim):
         if i % 100 == 0:
             print i, " ..."
-        if isSumOfTwo(i, abundants):
+        if not isSumOfTwo(i, abundants):
             s += i
 
     print "non abundant sum is ", s
