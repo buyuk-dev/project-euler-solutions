@@ -3,6 +3,7 @@
 # ----------------------------------------
 # Non-abundant sums.
 #
+from math import sqrt
 
 filename = "data/problem023.dat";
 inputFile = open(filename, "r")
@@ -14,9 +15,11 @@ def load(filename):
 
 def sumProperDivisors(n):
     s = 1
-    for i in range(2, n / 2 + 1):
+    pierw = int(sqrt(n))
+    for i in range(2, pierw):
         if n % i == 0:
             s += i
+            s += n // i
     return s
 
 
